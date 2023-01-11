@@ -4,12 +4,22 @@
     <title>T-Rex Game</title>
     <style>
       /* CSS for styling the game */
-      body {}
+      body {  background-color: #7f7f7f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-      #trex {}
+      #trex {  position: relative;
+        width: 50px;
+        animation: run 1s infinite linear;}
 
-      @keyframes {}
-
+      @keyframes move  {
+         0% { transform: translateX(0); }
+        100% { transform: translateX(-100px); }
+      }
+   
     </style>
   </head>
   <body>
