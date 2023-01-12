@@ -4,22 +4,47 @@
     <title>Chase Game</title>
     <style>
       /* CSS for styling the game */
-      body {  background-color: #7f7f7f;
+      body {
+        background-color: #7f7f7f;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
       }
 
-      #character {  position: relative;
+      #character {
+        position: relative;
         width: 50px;
-        animation: run 1s infinite linear;}
-
-      @keyframes move  {
-         0% { transform: translateX(0); }
-        100% { transform: translateX(-100px); }
+        animation: run 1s infinite linear;
       }
-   
+
+      #character::before {
+        content: "";
+        position: absolute;
+        top: 35px;
+        left: 20px;
+        width: 10px;
+        height: 25px;
+        border-radius: 20px 20px 0 0;
+        background-color: #333;
+      }
+
+      #character::after {
+        content: "";
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 50px;
+        height: 10px;
+        border-radius: 0 0 20px 20px;
+        background-color: #333;
+      }
+
+      @keyframes run {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(100px); }
+      }
+
     </style>
   </head>
   <body>
