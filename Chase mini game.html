@@ -68,20 +68,20 @@
     <div class="obstacle" style="left: 100px"></div>
     <div class="obstacle" style="left: 200px"></div>
    <script>
-      // Get the T-Rex element
-      const trex = document.getElementById("trex");
-    
-      // Listen for the spacebar key to be pressed
-      document.body.addEventListener("keydown", function(event) {
-        if (event.code === "Space") {
-          // Change the position of the T-Rex to make it jump
-          trex.style.bottom = "100px";
-          // After a set amount of time, change the position of the T-Rex back to its original position
-          setTimeout(function() {
-            trex.style.bottom = "0px";
-          }, 500);
-        }
-      });
-    </script>
+  // Get the character element
+  const character = document.getElementById("character");
+
+  // Listen for the spacebar key to be pressed
+  document.body.addEventListener("keydown", function(event) {
+    if (event.code === "Space") {
+      // Change the position of the character to make it jump
+      character.style.bottom = "100px";
+      // After a set amount of time, change the position of the character back to its original position
+      setTimeout(function() {
+        character.style.bottom = "0px";
+      }, 500);
+    }
+  });
+</script>
   </body>
 </html>
