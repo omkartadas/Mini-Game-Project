@@ -1,109 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Chase Game</title>
-    <style>
-      /* CSS for styling the game */
-      body {
-        background-color: #22cb58;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      #character {
-        position: relative;
-        width: 50px;
-        animation: run 1s infinite linear;
-      }
-
-      #character::before {
-        content: "";
-        position: absolute;
-        top: 35px;
-        left: 20px;
-        width: 10px;
-        height: 25px;
-        border-radius: 20px 20px 0 0;
-        background-color: rgb(235, 0, 0);
-      }
-
-      #character::after {
-        content: "";
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 50px;
-        height: 10px;
-        border-radius: 0 0 20px 20px;
-        background-color: rgb(255, 0, 0);
-      }
-
-      @keyframes run {
-        50% { transform: translateX(50px); }
-        100% { transform: translateX(100px); }
-      }
-       
-      /* CSS for styling the obstacles */
-      .obstacle {
-        position: absolute;
-        bottom: 0;
-        width: 50px;
-        height: 200px;
-        background-color: rgb(109, 0, 13);
-        animation: move 1s infinite linear;
-      }
-
-      @keyframes move {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100px); }
-      }
-
-    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chase Game</title> 
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div id="character"></div>
-    <div class="obstacle"></div>
-    <div class="obstacle" style="left: 100px"></div>
-    <div class="obstacle" style="left: 200px"></div>
-    <script>
-      // Get the character element
-      const character = document.getElementById("character");
-      const obstacles = document.getElementsByClassName("obstacle");
-    
-    // Listen for the spacebar key to be pressed
-     document.body.addEventListener("keydown", function(event) {
-    if (event.code === "Space") {
-      // Change the position of the character to make it jump
-      character.style.bottom = "100px";
-      // After a set amount of time, change the position of the character back to its original position
-      setTimeout(function() {
-        character.style.bottom = "0px";
-      }, 500);
-    }
-  });
-
-  // Check for collision every 10 milliseconds
-  setInterval(function() {
-    // Get the positions of the character and obstacles
-    const characterRect = character.getBoundingClientRect();
-    for (let i = 0; i < obstacles.length;i++) 
-  {
-    const obstacleRect = obstacles[i].getBoundingClientRect();
-    // Check if the character and obstacle are overlapping
-    if (characterRect.x < obstacleRect.x + obstacleRect.width &&
-    characterRect.x + characterRect.width > obstacleRect.x &&
-    characterRect.y < obstacleRect.y + obstacleRect.height &&
-    characterRect.y + characterRect.height > obstacleRect.y) {
-    // If there is a collision, end the game
-    alert("Game Over!");
-    location.reload();
-}
-}
-}, 10);
-</script>
-      
-    </script>
+    <div class="game_over">
+      <button>GO</button>
+    </div>
+    <div class="game" id="game">
+      <div class="timer">
+        <p>SCORE:</p>
+        <p id="score"></p>
+      </div>
+      <div class="top_score">
+        <p>TOP SCORE:</p>
+        <p id="top"></p>
+      </div>
+      <div class="character"></div>
+      <div class="obstacle"></div>
+    </div>
   </body>
+  <script src="./dist/app.js" defer type="module"></script>
 </html>
